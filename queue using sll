@@ -1,93 +1,75 @@
-#include<stdio.h>
-#include<stdlib.h>
-struct node
+while(1)
 {
-    int data;
-    struct node*next;
-};
-struct node*front,*rear;
-void insertion();
-void deletion();
-void display();
-void main()
+printf("\n ________");
+printf("\n queue ADT using SSL operations are:\n");
+printf("\n _");
+printf("\n\t1.Insert");
+printf("\n\t2.Delete");
+printf("\n\t3.Display");
+printf("\n\t4.Exit");
+printf("\n Eneter ur choice:");
+scanf("%d",&ch);
+switch(ch)
 {
-    int ch;
-    system("clear");
-    while(1)
-    {
-        printf("\n______________________________");
-        printf("\nqueue using sll operations  are\n");
-        printf("\n_______________________________");
-        printf("\n\t1.insertion\n");
-        printf("\n\t2.deletion\n");
-        printf("\n\t3.display\n");
-        printf("\n\t4.exit\n");
-        printf("enter your choice");
-        scanf("%d",&ch);
-        switch(ch)
-        {
-            case 1:
-                insertion();
-                break;
-            case 2:
-                deletion();
-                break;
-            case 3:
-                display();
-                break;
-            case 4:
-                exit(0);
-            default:
-                printf("\n wrong choice\n");
-                break;
-        }
-    }
+case 1:insert();
+break;
+case 2:del();
+break;
+case 3:display();
+break;
+case 4:exit(0);
+break;
+default:printf("\n wrong choice");
 }
-void insertion()
-{
-    struct node*ptr;
-    ptr=(struct node*)malloc(sizeof(struct node));
-    printf("enter node information to be inserted\n");
-    scanf("%d",&ptr->data);
-    if(front==NULL)
-    {
-        front=ptr;
-        rear=ptr;
-        front->next=NULL;
-        rear->next=NULL;
-    }
-    else
-    {
-        rear->next=ptr;
-        rear=ptr;
-        rear->next=NULL;
-    }
 }
-void deletion()
+}
+void insert()
 {
-    struct node*ptr;
-    if(front==NULL)
-    printf("queue is underflow");
-    else
-    {
-        printf("deleted elements are%d",&ptr->data);
-        ptr=front;
-        front=ptr->next;
-        free(ptr);
-    }
+struct node *ptr;
+ptr=(struct node*)malloc(sizeof(struct node));
+printf("\n Enter node information:");
+scanf("%d",&ptr->data);
+if(front==NULL)
+{
+front=ptr;
+rear=ptr;
+front->next=NULL;
+rear->next=NULL;
+}
+else
+{
+rear->next=ptr;
+rear=ptr;
+rear->next=NULL;
+}
+}
+void del()
+{
+struct node *ptr;
+if(front==NULL)
+{
+printf("\n Queue underflow");
+int count=1;
+}
+else
+{
+ptr=front;
+printf("\n deleted element is:%d",ptr->data);
+front=ptr->next;
+}
 }
 void display()
 {
-    struct node*ptr;
-    ptr=front;
-    if(front==NULL)
-    printf("queue is empty");
-    else
-    {
-        while(ptr!=NULL)
-        {
-        printf("%d->",ptr->data);
-        ptr=ptr->next;
-        }
-    }
+struct node *ptr;
+ptr=front;
+if(front=NULL)
+printf("\n Queue Empty\n");
+else
+{
+while(ptr!=NULL)
+{
+printf("%d->",ptr->data);
+ptr=ptr->next;
+}
+}
 }
