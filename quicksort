@@ -1,48 +1,46 @@
 #include<stdio.h>
-void quicksort(int a[],int,int);
-int partition(int a[],int,int);
+void quicksort(int a[],int ,int );
+int partition(int a[],int ,int );
 void main()
 {
-    int a[20],i,n;
-    printf("enter number of elements");
-    scanf("%d",&n);
-    printf("enter the elements");
-    for(i=0;i<n;i++)
-    scanf("%d",&a[i]);
-    quicksort(a,0,n-1);
-    printf("sorted elements are:");
-    for(i=0;i<n;i++)
-    printf("%d",&a[i]);
+int a[20],n,i;
+printf("\nEnter number of elements :");
+scanf("%d",&n);
+printf("\nEnter the elements : ");
+for(i=0;i<n;i++) scanf("%d",&a[i]);
+quicksort(a,0,n-1);
+printf("\nSorted elements are :");
+for(i=0;i<n;i++) printf("%d\t",a[i]);
 }
 void quicksort(int a[10],int first,int last)
 {
-    int p;
-    if(first<last)
-    {
-        p=partition(a,first,last);
-        quicksort(a,first,p-1);
-        quicksort(a,last,p+1);
-    }
+int p;
+if(first<last)
+{
+p=partition(a,first,last);
+quicksort(a,first,p-1);
+quicksort(a,p+1,last);
+}
 }
 int partition(int a[],int first,int last)
 {
-    int pivot,i,j,temp;
-    first=pivot;
-    i=first;
-    j=last;
-    while(i<j)
-    {
-    while(a[i]<=a[pivot]&&i<last)i++;
-    while(a[j]<a[pivot])j--;
-    if(i<j)
-    {
-    a[i]=a[j];
-    temp=a[i];
-    a[j]=temp;
-    }
-    }
-    a[pivot]=a[j];
-    temp=a[pivot];
-    a[j]=temp;
-    return j;
+int pivot,i,j,temp;
+pivot=first;
+i=first;
+j=last;
+while(i<j)
+{
+while(a[i]<=a[pivot] && i<last) i++;
+while(a[j]>a[pivot]) j--;
+if(i<j)
+{
+temp = a[i];
+a[i]=a[j];
+a[j]=temp;
+}
+}
+temp=a[pivot];
+a[pivot]=a[j];
+a[j]=temp;
+return j;
 }
