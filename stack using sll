@@ -2,78 +2,75 @@
 #include<stdlib.h>
 struct node
 {
-    int data;
-    struct node*next;
+int data;
+struct node *next;
 };
-struct node*top;
+struct node *top;
 void push();
 void pop();
 void display();
 void main()
 {
-    int choice;
-    system("clear");
-    while(1)
-    {
-        printf("\n__________________________");
-        printf("\n Stack ADT Operations:\n");
-        printf("1. Push\n");
-        printf("2. Pop\n");
-        printf("3. Display\n");
-        printf("4. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d",&choice);
-        switch(choice)
-        {
-            case 1:
-                push();
-                break;
-            case 2:
-                pop();
-                break;
-            case 3:
-                display();
-                break;
-            case 4:
-                exit(0);
-            default:
-                printf("\nInvalid choice! Please try again.\n");
-           }   }
+int ch;
+system("clear");
+while(1)
+{
+printf("__________");
+printf("\n stack usinf sll");
+printf("_________\n");
+printf("\nt1.push");
+printf("\nt2.pop");
+printf("\nt3.display");
+printf("\nt4.exit");
+printf("\n Eneter ur choice");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1:push();
+break;
+case 2:pop();
+break;
+case 3:display();
+break;
+case 4:exit(0);
+break;
+default:printf("\n wrong choice");
+}
+}
 }
 void push()
 {
-    struct node*ptr;
-    ptr=(struct node*)malloc(sizeof(struct node));
-    printf("enter element to be inserted");
-    scanf("%d",&ptr->data);
-    top=ptr;
-    ptr->next=top;
+struct node *ptr;
+ptr=(struct node*)malloc(sizeof(struct node));
+printf("\n enter elmnt to be inserted:");
+scanf("%d",&ptr->data);
+ptr->next=top;
+top=ptr;
 }
 void pop()
 {
-    struct node*ptr;
-    if(top==NULL)
-    printf("stack underflow");
-    else
-    {
-        printf("deleted elements are%d",ptr->data);
-        ptr=top;
-        top=ptr->next;
-        free(ptr);
-    }
+struct node *ptr;
+if(top==NULL)
+printf("\n stack underflow\n");
+else
+{
+ptr=top;
+printf("\n deleted element is:%d\n",ptr->data);
+top=ptr->next;
+free(ptr);
+}
 }
 void display()
 {
-    struct node*ptr;
-    ptr=top;
-    if(top==NULL)
-    printf("stack is empty");
-    else
-    {
-        while(ptr!=NULL)
-        {
-        printf("%d->",&ptr->data);
-        ptr=ptr->next;
-        }
-    }
+struct node *ptr;
+ptr=top;
+if(top==NULL)
+printf("\n stack is empty\n");
+{
+while(ptr!=NULL)
+{
+printf("%d->",ptr->data);
+ptr=ptr->next;
+}
+}
 }
